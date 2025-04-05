@@ -11,8 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.crapsgame.controllers.GameController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.crapsgame.controllers.GameController">
    <children>
       <HBox alignment="CENTER" prefHeight="50.0" spacing="10.0" style="-fx-background-color: black;">
          <children>
@@ -21,7 +20,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" style="-fx-background-color: black; -fx-border-color: white; -fx-border-radius: 10;" text="?" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#onActionButtonAyuda" style="-fx-background-color: black; -fx-border-color: white; -fx-border-radius: 10;" text="?" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -32,32 +31,67 @@
          <children>
             <VBox alignment="CENTER" style="-fx-border-color: black;" HBox.hgrow="ALWAYS">
                <children>
-                  <Label text="ZONA DE JUEGO">
+                  <Label style="-fx-background-color: #ADD8E6; -fx-background-radius: 5px; -fx-border-color: black; -fx-border-radius: 5px;" text="ZONA DE JUEGO">
                      <font>
-                        <Font name="System Bold" size="12.0" />
+                        <Font name="Arial Black" size="14.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets bottom="60.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
                   </Label>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                      <children>
                         <ImageView fx:id="diceImageView1" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView fx:id="diceImageView2" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="diceImageView2" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin></ImageView>
                      </children>
+                     <VBox.margin>
+                        <Insets bottom="40.0" />
+                     </VBox.margin>
                   </HBox>
-                  <Button mnemonicParsing="false" onAction="#onActionPlayButton" text="JUGAR" />
+                  <Button mnemonicParsing="false" onAction="#onActionPlayButton" style="-fx-background-color: #ADD8E6; -fx-border-color: black; -fx-background-radius: 3px; -fx-border-radius: 9px;" text="JUGAR">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font></Button>
                </children>
             </VBox>
             <VBox alignment="CENTER" style="-fx-border-color: black;" HBox.hgrow="ALWAYS">
                <children>
-                  <Label fx:id="nicknameLabel" text="Nickname" />
-                  <Label text="RESULTADOS" />
+                  <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0" VBox.vgrow="NEVER">
+                     <children>
+                        <Label fx:id="nicknameLabel" style="-fx-background-color: #ADD8E6; -fx-background-radius: 5px; -fx-border-color: black; -fx-border-radius: 5px;" text="Nickname">
+                           <font>
+                              <Font name="Arial Black" size="14.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="60.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <Label text="RESULTADOS">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
                   <GridPane style="-fx-border-color: black;">
                     <columnConstraints>
                       <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="45.60002746582031" minHeight="10.0" prefHeight="31.200018310546874" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="36.00000610351562" minHeight="10.0" prefHeight="29.599981689453116" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
                         <Label text="TIRO">
@@ -70,32 +104,44 @@
                               <Insets right="10.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label fx:id="rollScoreLabel" style="-fx-border-color: black;" text="0" GridPane.columnIndex="1">
+                        <Label fx:id="rollScoreLabel" style="-fx-border-color: black; -fx-background-color: white;" text="0" GridPane.columnIndex="1">
                            <GridPane.margin>
-                              <Insets left="10.0" />
+                              <Insets bottom="5.0" left="10.0" />
                            </GridPane.margin>
                            <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                              <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                            </padding>
+                           <font>
+                              <Font name="Arial Black" size="12.0" />
+                           </font>
                         </Label>
                         <Label style="-fx-border-color: black;" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <GridPane.margin>
-                              <Insets left="10.0" />
+                              <Insets left="10.0" top="5.0" />
                            </GridPane.margin>
                            <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                              <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                            </padding>
+                           <font>
+                              <Font name="Arial Black" size="12.0" />
+                           </font>
                         </Label>
                      </children>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="8.0" top="8.0" />
+                     </padding>
                   </GridPane>
-                  <GridPane>
+                  <GridPane style="-fx-border-color: black;">
                     <columnConstraints>
                       <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="60.00003662109375" minHeight="10.0" prefHeight="29.60001220703125" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="35.19998779296874" minHeight="0.7999633789062415" prefHeight="31.19998779296874" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
                         <Label text="JUEGOS GANADOS">
@@ -110,21 +156,33 @@
                         </Label>
                         <Label style="-fx-border-color: black;" text="0" GridPane.columnIndex="1">
                            <GridPane.margin>
-                              <Insets left="10.0" />
+                              <Insets bottom="5.0" left="10.0" />
                            </GridPane.margin>
                            <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                              <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                            </padding>
+                           <font>
+                              <Font name="Arial Black" size="12.0" />
+                           </font>
                         </Label>
                         <Label style="-fx-border-color: black;" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <GridPane.margin>
-                              <Insets left="10.0" />
+                              <Insets left="10.0" top="5.0" />
                            </GridPane.margin>
                            <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                              <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                            </padding>
+                           <font>
+                              <Font name="Arial Black" size="12.0" />
+                           </font>
                         </Label>
                      </children>
+                     <padding>
+                        <Insets bottom="8.0" top="8.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
                   </GridPane>
                </children>
             </VBox>
