@@ -44,7 +44,7 @@ public class Game {
         }
 
         else{
-            return lastRoll;
+            return rollCount;
         }
     }
 
