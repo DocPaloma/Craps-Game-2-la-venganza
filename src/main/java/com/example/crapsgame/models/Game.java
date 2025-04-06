@@ -14,37 +14,28 @@ public class Game {
         rollCount = 0;
     }
 
-    public int checkRoll(int rollScore){
+    public void checkRoll(int rollScore){
         rollCount = rollCount +1;
         if (checkFirstRollWin(rollScore)&& checkIfFirstRoll(rollCount)){
             winCount = winCount +1;
-            return winCount;
         }
 
         else if (checkCrapsLose(rollScore) && checkIfFirstRoll(rollCount)){
             loseCount = loseCount +1;
-            return loseCount;
         }
 
         else if (checkIfPoint(rollScore)&& point == 0){
             point = rollScore;
-            return point;
         }
 
         else if (checkPointWIn(rollScore)){
             winCount = winCount +1;
             point = 0;
-            return winCount;
         }
 
         else if(rollScore != point && rollScore == 7){
             loseCount = loseCount +1;
             point = 0;
-            return loseCount;
-        }
-
-        else{
-            return rollCount;
         }
     }
 
@@ -85,4 +76,18 @@ public class Game {
     public boolean checkIfFirstRoll(int rollCount){
         return rollCount == 1;
     }
+
+    public int getWinCount(){
+        return winCount;
+    }
+
+    public int getLoseCount(){
+        return loseCount;
+    }
+
+    public int getPoint(){
+        return point;
+    }
+
+
 }
